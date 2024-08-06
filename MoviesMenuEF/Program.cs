@@ -12,12 +12,11 @@ class Program
     static void Main(string[] args)
     {
 
-        using (MyBootcampDbContext context = new())
-        {
-            movieService.SetDbContext(context);
+        using MyBootcampDbContext context = new();
+        movieService.SetDbContext(context);
 
-            // Movie Menu Options
-            MenuOptions = new List<Option>
+        // Movie Menu Options
+        MenuOptions = new List<Option>
             {
                 new Option("List all available movies.", movieConsoleService.ListAllMovies),
                 new Option("Add a new movie to the list.", movieConsoleService.AddMovie),
@@ -26,14 +25,13 @@ class Program
                 new Option("Exit the program.", () => Environment.Exit(0))
             };
 
-            // default is List all available _movies
-            int index = 0;
+        // default is List all available _movies
+        int index = 0;
 
-            // Write the menu out
-            movieConsoleService.DisplayMenu(MenuOptions, index);
-            movieConsoleService.HandleMenuSelection(MenuOptions);
+        // Write the menu out
+        movieConsoleService.DisplayMenu(MenuOptions, index);
+        movieConsoleService.HandleMenuSelection(MenuOptions);
 
-            Console.ReadKey();
-        }
+        Console.ReadKey();
     }
 }
