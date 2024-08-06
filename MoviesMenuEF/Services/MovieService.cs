@@ -35,9 +35,19 @@ internal class MovieService
 
     public string ModifyMovie(Movie updatedMovie)
     {
-        _dbContext.Movies.Update(updatedMovie);
-        _dbContext.SaveChanges();
-        updateInitialMoviesList();
+        var movieEntity = _dbContext.Movies.FirstOrDefault(m => m.Id == updatedMovie.Id);
+
+        if (movieEntity != null)
+        {
+            movieEntity.Title = updatedMovie.Title;
+            movieEntity.Director = updatedMovie.Director;
+            movieEntity.ReleaseYear = updatedMovie.ReleaseYear;
+            movieEntity.Genre = updatedMovie.Genre;
+            movieEntity.Price = updatedMovie.Price;
+            
+            _dbContext.SaveChanges();
+            updateInitialMoviesList();
+        }
 
         return $"{updatedMovie.Title} modified in the database successfully!";
     }
@@ -51,7 +61,7 @@ internal class MovieService
             _dbContext.SaveChanges();
             updateInitialMoviesList();
 
-            return $"Movie: {movie.Title} is removed from the database succesfully";
+            return $"Movie: {movie.Title} is removed from the database successfully";
         }
         return $"Movie with {id} is not found";
     }
