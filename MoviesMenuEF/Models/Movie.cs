@@ -1,11 +1,24 @@
-﻿namespace MoviesMenuEFCore.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MoviesMenuEFCore.Models;
 
 public class Movie
 {
+    [Key]
     public int? Id { get; set; }
-    public string? Title { get; set; } 
+
+    [Required]
+    public string? Title { get; set; }
+
+    [Required]
     public string? Director { get; set; }
-    public int? ReleaseYear { get; set; } 
+
+    [Required]
+    public int? ReleaseYear { get; set; }
+
+    [Required]
     public string? Genre { get; set; }
+
+    [Required]
     public decimal? Price { get; set; }
 }
