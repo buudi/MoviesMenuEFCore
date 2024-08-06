@@ -58,7 +58,7 @@ internal class MovieService
 
     public bool CheckMovieExists(int? id)
     {
-        return _movies.Any(m => m.Id == id);
+        return _dbContext.Movies.Any(m => m.Id == id);
     }
 
 }

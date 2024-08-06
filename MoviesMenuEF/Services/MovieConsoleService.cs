@@ -103,7 +103,9 @@ internal class MovieConsoleService(MovieService movieService)
             Console.WriteLine("Invalid input. Please enter a valid price.");
         }
 
-        string? result = _movieService.AddMovie(new Movie(title, director, genre, releaseYear, price));
+        //string? result = _movieService.AddMovie(new Movie(title, director, genre, releaseYear, price));
+        string result = _movieService.AddMovie(new Movie { Title = title, Director = director, Genre = genre, ReleaseYear = releaseYear, Price = price });
+
         Console.WriteLine("\n" + result);
 
         Console.WriteLine("\n\nPress 'b' to go back to the main menu.");
@@ -170,7 +172,8 @@ internal class MovieConsoleService(MovieService movieService)
             Console.WriteLine("Invalid input. Please enter a valid price.");
         }
 
-        string results = _movieService.ModifyMovie(new Movie(title, director, genre, releaseYear, price));
+        string results = _movieService.ModifyMovie(new Movie { Title = title, Director = director, Genre = genre, ReleaseYear = releaseYear, Price = price });
+
         Console.WriteLine("\n" + results);
 
         Console.WriteLine("\n\nPress 'b' to go back to the main menu.");
