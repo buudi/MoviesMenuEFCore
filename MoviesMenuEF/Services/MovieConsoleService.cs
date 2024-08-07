@@ -2,7 +2,7 @@
 
 namespace MoviesMenuEFCore.Services;
 
-internal class MovieConsoleService(MovieService movieService)
+internal sealed class MovieConsoleService(MovieService movieService)
 {
     private readonly MovieService _movieService = movieService;
 
